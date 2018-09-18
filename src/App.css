@@ -1,11 +1,11 @@
 .Main {
-  background-color: black;
+  background-color: #ffd175;
   height: 100vh;
   width: auto;
 }
 
 .title-btn, .title-input, .card-btn{
-  background-color: #ffd175;
+  background-color: transparent;
   border: none;
   border-radius: 5px;
   outline: none;
@@ -90,11 +90,11 @@
   color: rgb(145, 145, 145);
 }
 
-.list-collection {
+.list-container {
   display: flex;
 }
 
-.list-container {
+.list {
   background-color: #333;
   color: white;
   border: none;
@@ -103,7 +103,7 @@
   font-weight: 600;
   margin: 7px;
   width: 245px;
-  height: 70px;
+  min-height: 70px;
 }
 .list-name {
   margin: 3px;
