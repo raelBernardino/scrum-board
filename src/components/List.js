@@ -25,6 +25,7 @@ export default class List extends Component {
           onClick={this.props.onClick}
           onChange={this.props.onChange}
           addCard={this.props.addCard}
+          removeCard={this.props.removeCard}
           />
           </div>
         })

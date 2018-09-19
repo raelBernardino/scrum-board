@@ -189,9 +189,27 @@
   border: none; 
   border-radius: 3px;
   width: 240px;
+  height: 25px;
   padding: 7px;
   padding-right: 3px;
   background-color: white;
   color: #333;
   font-size: 14px;
+  display: flex;
+  justify-content: space-between
+}
+.card-title {
+  margin: 0;
+  margin: 5px;
+  margin-left: 3px;
+}
+.delete-card-btn {
+  background-color: white;
+  color: #333;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+.delete-card-btn:hover {
+  color: #73a9d6;
 }

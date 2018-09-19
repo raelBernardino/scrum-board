@@ -9,6 +9,7 @@ export default class CardContainer extends Component {
                 <Cards 
                     list={this.props.list}
                     index={this.props.index}
+                    removeCard={this.props.removeCard}
                 />
                 <NewCard
                     list={this.props.list}

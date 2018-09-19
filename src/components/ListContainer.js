@@ -11,6 +11,7 @@ export default class ListContainer extends Component {
           onClick={this.props.onAddCardToggle}
           onChange={this.props.onChangeCard}
           addCard={this.props.addCard}
+          removeCard={this.props.removeCard}
           removeList={this.props.removeList}
           />
           <NewList 

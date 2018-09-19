@@ -15,10 +15,18 @@ export default class Main extends Component {
     this._onAddCardToggle = this._onAddCardToggle.bind(this);
     this._onChangeCard = this._onChangeCard.bind(this);
     this._addCard = this._addCard.bind(this);
+    this._removeCard = this._removeCard.bind(this);
     this.state = {
       boardTitle: 'Untitled',
       isChangingBoardTitle: false,
-      lists: [],
+      lists: [
+        {
+          title: 'Morning',
+          card: '',
+          cards: ['asdasdf', 'dog'],
+          isAddingCard: false
+        }
+      ],
       listTitle: '',
       isCreatingList: false,
     }; 
@@ -93,8 +101,16 @@ export default class Main extends Component {
       lists: updatedList
     })
     updatedList[index].card = ''
-    console.log(this.state.lists)
   }
+  
+  _removeCard(index, i) {
+    const updatedList = [...this.state.lists]
+    updatedList[index].cards = updatedList[index].cards.filter((c, cardIndex) => {return cardIndex !== i})
+    this.setState({
+      lists: updatedList
+    })
+  }
+
   
   render() {
     const addListTag = this.state.lists.length
@@ -120,6 +136,7 @@ export default class Main extends Component {
       onChangeCard={this._onChangeCard}
       addCard={this._addCard}
       removeList={this._removeList}
+      removeCard={this._removeCard}
       />
       </div>
     );
