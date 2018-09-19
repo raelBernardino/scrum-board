@@ -10,7 +10,11 @@ export default class Main extends Component {
     this._onKeyDown = this._onKeyDown.bind(this);
     this._listToggle = this._listToggle.bind(this);
     this._onChangeList = this._onChangeList.bind(this);
+    this._removeList = this._removeList.bind(this);
     this._addNewList = this._addNewList.bind(this);
+    this._onAddCardToggle = this._onAddCardToggle.bind(this);
+    this._onChangeCard = this._onChangeCard.bind(this);
+    this._addCard = this._addCard.bind(this);
     this.state = {
       boardTitle: 'Untitled',
       isChangingBoardTitle: false,
@@ -25,19 +29,19 @@ export default class Main extends Component {
       boardTitle: e.target.value
     })
   }
-
+  
   _onClick() {
     this.setState({
       isChangingBoardTitle: !this.state.isChangingBoardTitle
     })
   }
-
+  
   _onKeyDown(e) {
-     if(e.keyCode === 13 || e.keyCode === 27) {
-       this.setState({
-         isChangingBoardTitle: !this.state.isChangingBoardTitle
-       })
-     }
+    if(e.keyCode === 13 || e.keyCode === 27) {
+      this.setState({
+        isChangingBoardTitle: !this.state.isChangingBoardTitle
+      })
+    }
   } 
   //newlist
   _listToggle() {
@@ -45,13 +49,19 @@ export default class Main extends Component {
       isCreatingList: !this.state.isCreatingList
     })
   }
-
+  
   _addNewList() {
     this.setState({
-      lists: this.state.lists.concat({title:this.state.listTitle, cards:[]})
+      lists: this.state.lists.concat({title:this.state.listTitle, card:'', cards:[], isAddingCard: false})
     })
     this._listToggle()
     console.log(this.state.lists)
+  }
+  
+  _removeList(index){
+    this.setState({
+      lists: this.state.lists.filter((x, remainingLists) => {return remainingLists !== index})
+    })
   }
 
   _onChangeList(e) {
@@ -59,28 +69,58 @@ export default class Main extends Component {
       listTitle: e.target.value
     })
   }
+  //card
+  _onAddCardToggle(index) {
+    const updatedList = [...this.state.lists]
+    updatedList[index].isAddingCard = !updatedList[index].isAddingCard
+    this.setState({
+      lists: updatedList
+    })
+  }
 
+  _onChangeCard(e, index){
+    const updatedList = [...this.state.lists]
+    updatedList[index].card = e.target.value
+    this.setState({
+      lists: updatedList
+    })
+  }
+
+  _addCard(index) {
+    const updatedList = [...this.state.lists]
+    updatedList[index].cards.push(updatedList[index].card)
+    this.setState({
+      lists: updatedList
+    })
+    updatedList[index].card = ''
+    console.log(this.state.lists)
+  }
+  
   render() {
     const addListTag = this.state.lists.length
     ? '+ Add another list'
     : '+ Add a list'
     return (
       <div className="main"> 
-        <RenameBoard 
-          boardTitle={this.state.boardTitle}
-          isChangingBoardTitle={this.state.isChangingBoardTitle}
-          onChangeRename={this._onChangeRename}
-          onRename={this._onClick}
-          onKeyDownRename={this._onKeyDown}
-        />
-        <ListContainer 
-          lists={this.state.lists}
-          isCreatingList={this.state.isCreatingList}
-          addListTag={addListTag}
-          listToggle={this._listToggle}
-          onChangeList={this._onChangeList}
-          addNewList={this._addNewList}
-        />
+      <RenameBoard 
+      boardTitle={this.state.boardTitle}
+      isChangingBoardTitle={this.state.isChangingBoardTitle}
+      onChangeRename={this._onChangeRename}
+      onRename={this._onClick}
+      onKeyDownRename={this._onKeyDown}
+      />
+      <ListContainer 
+      lists={this.state.lists}
+      isCreatingList={this.state.isCreatingList}
+      addListTag={addListTag}
+      listToggle={this._listToggle}
+      onChangeList={this._onChangeList}
+      addNewList={this._addNewList}
+      onAddCardToggle={this._onAddCardToggle}
+      onChangeCard={this._onChangeCard}
+      addCard={this._addCard}
+      removeList={this._removeList}
+      />
       </div>
     );
   }

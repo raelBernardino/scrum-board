@@ -6,16 +6,20 @@ export default class ListContainer extends Component {
   render(){
     return(
       <div className="list-container">
-        <List 
+          <List 
           lists={this.props.lists}
-        />
-        <NewList 
+          onClick={this.props.onAddCardToggle}
+          onChange={this.props.onChangeCard}
+          addCard={this.props.addCard}
+          removeList={this.props.removeList}
+          />
+          <NewList 
           isCreatingList={this.props.isCreatingList}
           addListTag={this.props.addListTag}
           listToggle={this.props.listToggle}
           onChangeList={this.props.onChangeList}
           addNewList={this.props.addNewList}
-        />
+          />
       </div>
     )
   }
