@@ -7,7 +7,7 @@ export default class ListContainer extends Component {
     return(
       <div className="list-container">
         <List 
-        
+          lists={this.props.lists}
         />
         <NewList 
           isCreatingList={this.props.isCreatingList}

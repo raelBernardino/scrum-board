@@ -62,8 +62,8 @@ export default class Main extends Component {
 
   render() {
     const addListTag = this.state.lists.length
-      ? '+ Add a list'
-      : '+ Add another list'
+    ? '+ Add another list'
+    : '+ Add a list'
     return (
       <div className="main"> 
         <RenameBoard 
@@ -74,6 +74,7 @@ export default class Main extends Component {
           onKeyDownRename={this._onKeyDown}
         />
         <ListContainer 
+          lists={this.state.lists}
           isCreatingList={this.state.isCreatingList}
           addListTag={addListTag}
           listToggle={this._listToggle}
