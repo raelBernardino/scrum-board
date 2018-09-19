@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import RenameBoard from './RenameBoard';
+
 export default class Main extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,6 @@ export default class Main extends Component {
       isChangingBoardTitle: false
     }; 
   }
-
   _onChange(e) {
     this.setState({
       boardTitle: e.target.value
@@ -34,20 +35,13 @@ export default class Main extends Component {
   render() {
     return (
       <div className="main"> 
-        { this.state.isChangingBoardTitle ?
-            <input 
-              type="text" 
-              className="board-title-input" 
-              onChange={this._onChange} 
-              placeholder={this.state.boardTitle}
-              onKeyDown={this._onKeyDown}
-              />
-          : <button 
-              className="board-title-btn"
-              onClick={this._onClick}>
-            {this.state.boardTitle}
-            </button>
-        }
+        <RenameBoard 
+          boardTitle={this.state.boardTitle}
+          isChangingBoardTitle={this.state.isChangingBoardTitle}
+          onChangeRename={this._onChange}
+          onRename={this._onClick}
+          onKeyDownRename={this._onKeyDown}
+        />
       </div>
     );
   }
