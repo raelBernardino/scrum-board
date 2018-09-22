@@ -5,6 +5,7 @@ import ListContainer from './ListContainer';
 export default class Main extends Component {
   constructor(props) {
     super(props);
+    this._settingsToggle = this._settingsToggle.bind(this);
     this._onChangeRename = this._onChangeRename.bind(this);
     this._onClick = this._onClick.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
@@ -19,11 +20,16 @@ export default class Main extends Component {
     this.state = {
       boardTitle: 'Untitled',
       isChangingBoardTitle: false,
+      isEditingBoard: false,
+      boardStyle: {
+        backgroundColor: '#73a9d6'
+      },
+      boardColors: [],
       lists: [
         {
-          title: 'Morning',
+          title:'Stock List',
           card: '',
-          cards: ['asdasdf', 'dog'],
+          cards: [],
           isAddingCard: false
         }
       ],
@@ -51,6 +57,13 @@ export default class Main extends Component {
       })
     }
   } 
+
+  _settingsToggle(){
+    this.setState({
+      isEditingBoard: !this.state.isEditingBoard
+    })
+  }
+
   //newlist
   _listToggle() {
     this.setState({
@@ -117,13 +130,15 @@ export default class Main extends Component {
     ? '+ Add another list'
     : '+ Add a list'
     return (
-      <div className="main"> 
+      <div className="main" style={this.state.boardStyle}> 
       <RenameBoard 
       boardTitle={this.state.boardTitle}
       isChangingBoardTitle={this.state.isChangingBoardTitle}
       onChangeRename={this._onChangeRename}
       onRename={this._onClick}
       onKeyDownRename={this._onKeyDown}
+      isEditingBoard={this.state.isEditingBoard}
+      settingsToggle={this._settingsToggle}
       />
       <ListContainer 
       lists={this.state.lists}

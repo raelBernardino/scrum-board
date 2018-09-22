@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BoardSettings from './BoardSettings';
 
 export default class RenameBoard extends Component {
   constructor(props){
@@ -19,13 +20,21 @@ export default class RenameBoard extends Component {
               placeholder={this.props.boardTitle}
               onKeyDown={this.props.onKeyDownRename}
               />
-          : <button 
-              className="board-title-btn"
-              onClick={this.props.onRename}>
-            {this.props.boardTitle}
-            </button>
+          : <div className="board-header">
+              <button
+                className="board-title-btn"
+                style={this.props.backgroundColor}
+                onClick={this.props.onRename}
+                >
+              {this.props.boardTitle}
+              </button>
+              <BoardSettings
+                isEditingBoard={this.props.isEditingBoard}
+                settingsToggle={this.props.settingsToggle}
+              />
+            </div>
         }
-      </div>
+        </div>
     );
   }
 }
