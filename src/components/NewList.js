@@ -32,6 +32,7 @@ export default class NewList extends Component {
             </div>
           : <button 
               className="new-list-btn"
+              style={this.props.boardStyle}
               onClick={this.props.listToggle}>
             {this.props.addListTag}
             </button>

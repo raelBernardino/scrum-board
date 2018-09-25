@@ -87,7 +87,6 @@
 }
 
 .settings-container-btn {
-  margin-top: 10px;
   padding: 7px;
   background-color: #333;
   outline:none;
@@ -115,13 +114,12 @@
   margin: 7px;
   text-align: left;
   color: white;
-  background-color: #5d96c6;
 }
 .new-list-btn {
   height: 45px;
 }
 .new-list-btn:hover {
-  background-color: #4e87b7;
+  background-color:  rgba(0, 0, 0, 0.5);
 }
 .create-list-container {
   width: 266px;
@@ -285,4 +283,75 @@
 }
 .delete-card-btn:hover {
   color: #73a9d6;
+}
+.color-list {
+  min-height: 40px;
+  max-width: 275px;
+}
+
+.color-icon-container {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+/* .remove-color-icon {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  left: 14px;
+  background-color: #e5e5e5;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+.remove-color-icon:hover {
+  background-color: #cccccc;
+} */
+.color-icon {
+  outline: none;
+  border:none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.color-icon:hover {
+  cursor: pointer;
+}
+.color-icon:active{
+  width:33px;
+  height:33px;
+}
+.color-icon-settings-container{
+  position: absolute;
+}
+.color-name {
+  margin: 0;
+  padding: 0;
+  margin-top: 7px;
+  margin-left: 7px;
+  color: white;
+}
+.color-icon-settings {
+  display: flex;
+  flex-direction: column;
+  min-height: 98px;
+  min-width: 150px;
+  background-color: #333;
+  border-radius: 5px;
+  border: none;
+}
+.set-background-btn, .delete-color{
+  margin: 7px;
+  margin-bottom: 0;
+  padding: 5px;
+  background-color: white;
+  border: none; 
+  font-size: 12px;
+  font-weight: 700;
 }

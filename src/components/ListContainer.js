@@ -20,6 +20,7 @@ export default class ListContainer extends Component {
           listToggle={this.props.listToggle}
           onChangeList={this.props.onChangeList}
           addNewList={this.props.addNewList}
+          boardStyle={this.props.boardStyle}
           />
       </div>
     )

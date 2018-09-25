@@ -17,6 +17,11 @@ export default class Main extends Component {
     this._onChangeCard = this._onChangeCard.bind(this);
     this._addCard = this._addCard.bind(this);
     this._removeCard = this._removeCard.bind(this);
+    this._onChangeBGC = this._onChangeBGC.bind(this);
+    this._addColor = this._addColor.bind(this);
+    this._setBoardColor = this._setBoardColor.bind(this);
+    this._toggleColorOptions = this._toggleColorOptions.bind(this);
+    this._deleteColor = this._deleteColor.bind(this);
     this.state = {
       boardTitle: 'Untitled',
       isChangingBoardTitle: false,
@@ -24,7 +29,15 @@ export default class Main extends Component {
       boardStyle: {
         backgroundColor: '#73a9d6'
       },
-      boardColors: [],
+      boardColorArray: [
+        {
+          style: {
+            backgroundColor: '#73a9d6',
+          },
+          toggle: false
+        }
+      ],
+      boardColor: '',
       lists: [
         {
           title:'Stock List',
@@ -123,7 +136,46 @@ export default class Main extends Component {
       lists: updatedList
     })
   }
+  //board settings
+  _onChangeBGC(e) {
+    this.setState({
+      boardColor: e.target.value
+    })
+  }
 
+  _addColor(){
+    const temp = [...this.state.boardColorArray]
+    temp.push({style:{backgroundColor:this.state.boardColor}, toggle: false})
+    this.setState({
+      boardColorArray: temp,
+      boardColor: ''
+    })
+  }
+
+  _setBoardColor(i){
+    const tempArr = [...this.state.boardColorArray]
+    const tempObj = {backgroundColor: tempArr[i].style.backgroundColor}
+    this.setState({
+      boardStyle: tempObj
+    })
+    this._toggleColorOptions(i)
+  }
+
+  _toggleColorOptions(i){
+    const temp = [...this.state.boardColorArray]
+    temp[i].toggle = !temp[i].toggle
+    this.setState({
+      boardColorArray: temp
+    })
+    console.log(this.state.boardColorArray)
+  }
+
+  _deleteColor(i){
+    this.setState({
+      boardColorArray: this.state.boardColorArray.filter((x, index) => {return index !== i})
+    })
+
+  }
   
   render() {
     const addListTag = this.state.lists.length
@@ -139,6 +191,13 @@ export default class Main extends Component {
       onKeyDownRename={this._onKeyDown}
       isEditingBoard={this.state.isEditingBoard}
       settingsToggle={this._settingsToggle}
+      onChangeBGC={this._onChangeBGC}
+      boardColor={this.state.boardColor}
+      boardColorArray={this.state.boardColorArray}
+      addColor={this._addColor}
+      setBoardColor={this._setBoardColor}
+      toggleColorOptions={this._toggleColorOptions}
+      deleteColor={this._deleteColor}
       />
       <ListContainer 
       lists={this.state.lists}
@@ -152,6 +211,7 @@ export default class Main extends Component {
       addCard={this._addCard}
       removeList={this._removeList}
       removeCard={this._removeCard}
+      boardStyle={this.state.boardStyle}
       />
       </div>
     );

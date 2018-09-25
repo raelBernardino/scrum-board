@@ -23,7 +23,6 @@ export default class RenameBoard extends Component {
           : <div className="board-header">
               <button
                 className="board-title-btn"
-                style={this.props.backgroundColor}
                 onClick={this.props.onRename}
                 >
               {this.props.boardTitle}
@@ -31,6 +30,13 @@ export default class RenameBoard extends Component {
               <BoardSettings
                 isEditingBoard={this.props.isEditingBoard}
                 settingsToggle={this.props.settingsToggle}
+                boardColor={this.props.boardColor}
+                boardColorArray={this.props.boardColorArray}
+                onChange={this.props.onChangeBGC}
+                addColor={this.props.addColor}
+                setBoardColor={this.props.setBoardColor}
+                toggleColorOptions={this.props.toggleColorOptions}
+                deleteColor={this.props.deleteColor}
               />
             </div>
         }
