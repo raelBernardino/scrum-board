@@ -27,7 +27,7 @@ export default class Main extends Component {
       isChangingBoardTitle: false,
       isEditingBoard: false,
       boardStyle: {
-        backgroundColor: '#73a9d6'
+        backgroundColor: '#73a9d6',
       },
       boardColorArray: [
         {
@@ -43,7 +43,8 @@ export default class Main extends Component {
           title:'Stock List',
           card: '',
           cards: [],
-          isAddingCard: false
+          isAddingCard: false,
+          settings: false
         }
       ],
       listTitle: '',
@@ -86,7 +87,7 @@ export default class Main extends Component {
   
   _addNewList() {
     this.setState({
-      lists: this.state.lists.concat({title:this.state.listTitle, card:'', cards:[], isAddingCard: false})
+      lists: this.state.lists.concat({title:this.state.listTitle, card:'', cards:[], isAddingCard: false, settings: false})
     })
     this._listToggle()
     console.log(this.state.lists)
@@ -102,6 +103,10 @@ export default class Main extends Component {
     this.setState({
       listTitle: e.target.value
     })
+  }
+
+  _toggleSettings(){
+    
   }
   //card
   _onAddCardToggle(index) {
@@ -174,7 +179,6 @@ export default class Main extends Component {
     this.setState({
       boardColorArray: this.state.boardColorArray.filter((x, index) => {return index !== i})
     })
-
   }
   
   render() {
@@ -185,6 +189,7 @@ export default class Main extends Component {
       <div className="main" style={this.state.boardStyle}> 
       <RenameBoard 
       boardTitle={this.state.boardTitle}
+      boardStyle={this.props.boardStyle}
       isChangingBoardTitle={this.state.isChangingBoardTitle}
       onChangeRename={this._onChangeRename}
       onRename={this._onClick}

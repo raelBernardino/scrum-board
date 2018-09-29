@@ -13,6 +13,7 @@ export default class ListContainer extends Component {
           addCard={this.props.addCard}
           removeCard={this.props.removeCard}
           removeList={this.props.removeList}
+          boardStyle={this.props.boardStyle}
           />
           <NewList 
           isCreatingList={this.props.isCreatingList}

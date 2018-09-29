@@ -35,6 +35,7 @@ export default class NewCard extends Component {
                     />
                     <button 
                     className="card-btn"
+                    style={this.props.boardStyle}
                     onClick={() => {this._addCard(index)}}>
                     Add Card
                     </button>

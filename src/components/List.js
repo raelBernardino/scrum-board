@@ -26,6 +26,7 @@ export default class List extends Component {
           onChange={this.props.onChange}
           addCard={this.props.addCard}
           removeCard={this.props.removeCard}
+          boardStyle={this.props.boardStyle}
           />
           </div>
         })

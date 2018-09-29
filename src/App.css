@@ -1,6 +1,6 @@
 .main {
   height: 100vh;
-  width: auto;
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -18,12 +18,12 @@
   padding: 7px;
 }
 .board-title-btn:hover {
-  background-color: #5d96c6;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .board-title-input {
   width: 250px;
   background-color: white;
-  color: #73a9d6;
+  color: #333;
 }
 .board-header {
   display: flex;
@@ -103,6 +103,7 @@
 }
 .created-list {
   align-self: flex-start;
+  width: auto;
 }
 .new-list-btn, .create-list-input {
   width: 265px;
@@ -117,9 +118,10 @@
 }
 .new-list-btn {
   height: 45px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .new-list-btn:hover {
-  background-color:  rgba(0, 0, 0, 0.5);
+  background-color:  rgba(0, 0, 0, 0.2);
 }
 .create-list-container {
   width: 266px;
@@ -141,7 +143,6 @@
   margin-top: 2px;
   width: 75px;
   height: 30px;
-  outline: none;
   border:none;
   border-radius: 3px;
   background-color: #73a9d6;
@@ -194,6 +195,9 @@
   font-weight: 200;
   margin-right: 10px;
 }
+.remove-list:hover {
+  color: rgba(255, 255, 255, 0.2)
+}
 .add-card-toggle {
   width: 265px;
   height: 40px;
@@ -233,8 +237,6 @@
   font-size: 13px;
   font-weight: 600;
   padding: 5px 12px 5px 12px;
-  background-color: #73a9d6;
-  outline: none;
   border: none;
   border-radius: 3px;
   margin: 7px;
@@ -354,4 +356,26 @@
   border: none; 
   font-size: 12px;
   font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .list-container{
+    flex-direction: column;
+  }
+  .list {
+    flex-direction: column;
+  }
+  .settings {
+    width: auto;
+    margin-right: 10px;
+    position: absolute;
+    padding-bottom: 0;
+  }
+  .settings-container-input {
+    width: 175px;
+  }
+  .color-icon{
+    height: 32px; 
+    width: 32px;
+  }
 }

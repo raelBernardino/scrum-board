@@ -17,6 +17,7 @@ export default class CardContainer extends Component {
                     onClick={this.props.onClick}
                     onChange={this.props.onChange}
                     addCard={this.props.addCard}
+                    boardStyle={this.props.boardStyle}
                 />
             </div>
         )
